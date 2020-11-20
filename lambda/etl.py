@@ -6,7 +6,7 @@ import pymysql
 import json
 
 def extract_csv1(event, context):
-#Extract 1st CSV
+# Extract 1st CSV
 
   cols = ["Date","Country/Region", "Recovered"]
 
@@ -17,7 +17,7 @@ def extract_csv1(event, context):
   return rec
 
 def extract_csv2(event):
-#Extract 2nd CSV
+# Extract 2nd CSV
 
   url2 = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv"
 
@@ -26,7 +26,7 @@ def extract_csv2(event):
   return data
 
 def transform_csv(data, rec):
-#Transform CSVs
+# Transform CSVs
 
   data = pd.DataFrame(data)   
 
@@ -42,7 +42,7 @@ def transform_csv(data, rec):
 
   return data
 
-#Call Extract and Transform Functions
+# Call Extract and Transform Functions
 
 rec = extract_csv1({
   "key1": "value1"},1)
@@ -53,7 +53,7 @@ data = extract_csv2({
 data = transform_csv(data, rec)
 
 def load_to_db(data):
-#Retrieve AWS Secret
+# Retrieve AWS Secret
 
   secret_name = os.environ['SECRET_NAME']
   region_name = "eu-west-2"
@@ -68,6 +68,8 @@ def load_to_db(data):
   dbpass = secret_value['SecretString']
   j = json.loads(dbpass)
   dbpass = j['password']
+
+# Load data to RDS
 
   rds_instance = os.environ['RDS_INSTANCE']
   
