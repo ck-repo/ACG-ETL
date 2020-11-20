@@ -12,4 +12,4 @@ Git Repo for the A Cloud Guru Extract Transform Load (ETL) Challenge - https://a
 
 High Level Architecture Diagram:
 
-![Screenshot](ACG-ETL HLD.png)
+![](ACG-ETL%20HLD.png)
